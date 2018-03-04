@@ -56,9 +56,10 @@ import calculateWinner from '../functions/calculateWinner'
         const desc = move ?
           'Go to move #' + move + ' ' + location :
           'Go to game start';
+        const style = (move == this.state.stepNumber) ? "bold" : "" ;
         return (
-          <li key={move}>
-            <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <li key={move} className={style}>
+            <button onClick={() => this.jumpTo(move)} className={style}>{desc}</button>
           </li>
         );
       });
