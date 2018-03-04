@@ -26,7 +26,6 @@ import calculateWinner from '../functions/calculateWinner'
       }
       // Aqui se asigna el valor X / O al cuadro clickado
       squares[i] = this.state.xIsNext ? 'X' : 'O';
-      //console.log(this.state.stepNumber);
       order[this.state.stepNumber] = i;
       this.setState({
         history: history.concat([{
@@ -76,7 +75,11 @@ import calculateWinner from '../functions/calculateWinner'
       if (winner) {
         status = 'Winner: ' + winner;
       } else {
+        if(this.state.stepNumber == 9) {
+          status = 'Draw';
+        } else {
         status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+        }
       }
 
       
