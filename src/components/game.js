@@ -54,7 +54,8 @@ import calculateWinner from '../functions/calculateWinner'
     render() {
       const history = this.state.history;
       const current = history[this.state.stepNumber];
-      const winner = calculateWinner(current.squares);
+      const winRow = Array(0) ;
+      const winner = calculateWinner(current.squares, winRow);
       const gridStrings = ["0,0", "1,0", "2,0",
                            "0,1", "1,1", "2,1",
                            "0,2", "1,2", "2,2"];
@@ -78,12 +79,15 @@ import calculateWinner from '../functions/calculateWinner'
         status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
       }
 
+      
+
       return (
         <div className="game">
           <div className="game-board">
             <Board
               squares={current.squares}
               onClick={(i) => this.handleClick(i)}
+              winningSquares={winRow}
             />
           </div>
           <div className="game-info">

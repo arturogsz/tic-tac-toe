@@ -57,3 +57,7 @@ body {
   .bold {
     font-weight: bold;
   }
+
+  .winner {
+    background: #295;
+  }
