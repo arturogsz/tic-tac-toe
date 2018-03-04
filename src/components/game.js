@@ -10,6 +10,7 @@ import calculateWinner from '../functions/calculateWinner'
           squares: Array(9).fill(null),
         }],
         order: Array(9).fill(0),
+        toggle: false,
         stepNumber: 0,
         xIsNext: true,
       };
@@ -41,6 +42,12 @@ import calculateWinner from '../functions/calculateWinner'
       this.setState({
         stepNumber: step,
         xIsNext: (step % 2) === 0,
+      });
+    }
+
+    toggle() {
+      this.setState({
+        toggle: !this.state.toggle,
       });
     }
 
@@ -81,7 +88,10 @@ import calculateWinner from '../functions/calculateWinner'
           </div>
           <div className="game-info">
             <div>{status}</div>
-            <ol>{moves}</ol>
+            <ol>{this.state.toggle ? moves.reverse() : moves}</ol>
+          </div>
+          <div className="game-toggle">
+            <button onClick={() => this.toggle()}>Toggle</button>
           </div>
         </div>
       );
